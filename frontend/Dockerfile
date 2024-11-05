@@ -5,11 +5,11 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Install dependencies
-COPY frontend/package.json frontend/package-lock.json ./
+COPY package.json package-lock.json ./
 RUN npm install
 
 # Copy the rest of the application code
-COPY frontend .
+COPY / .
 
 # Expose port
 EXPOSE 3000
