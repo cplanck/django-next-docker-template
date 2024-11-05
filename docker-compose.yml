@@ -1,9 +1,19 @@
 version: '3.8'
 
 services:
+  backend:
+      build:
+        context: ./backend
+        dockerfile: Dockerfile
+      volumes:
+        - ./backend:/app
+      ports:
+        - "8000:8000"
+      env_file:
+        - backend/.env
   frontend:
     build:
-      context: .
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
