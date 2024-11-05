@@ -1,0 +1,1 @@
+This is a generic template that builds an application with a Next.js frontend and a Django backend. 
