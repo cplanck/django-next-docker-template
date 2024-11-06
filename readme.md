@@ -22,3 +22,7 @@ You can then start the instance by running:
 ```docker-compose up```
 
 This will start development servers for the frontend (port :3000) and backend (port :8000)
+
+TO DO:
+- Figure out how to deal with node_modules and make sure they copy normally
+
