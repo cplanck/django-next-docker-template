@@ -21,4 +21,4 @@ services:
       NODE_ENV: development
     volumes:
       - ./frontend:/app  # Mounts the current directory to /app inside the container
-      - /app/node_modules  # Ensures node_modules are isolated
+      # - /app/node_modules  # Ensures node_modules are isolated
