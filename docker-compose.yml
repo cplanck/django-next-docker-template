@@ -19,6 +19,12 @@ services:
       - "3000:3000"
     environment:
       NODE_ENV: development
-    volumes:
-      - ./frontend:/app  # Mounts the current directory to /app inside the container
-      # - /app/node_modules  # Ensures node_modules are isolated
+    # volumes:
+    #   - ./frontend:/app  # Mounts the current directory to /app inside the container
+    #   # - /app/node_modules  # Ensures node_modules are isolated
+
+      volumes:
+            - ./frontend:/app  # Mounts the current directory to /app inside the container
+
+            - ./frontend/node_modules:/app/node_modules  # Mounts node_modules from the host
+      command: ["sh", "-c", "npm install && npm run dev"]  # Installs dependencies if missing
