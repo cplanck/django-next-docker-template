@@ -7,9 +7,9 @@ services:
     env_file:
       - ./backend/.env
     environment:
-      POSTGRES_DB: postgres_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ${POSTGRES_DB_NAME}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -44,7 +44,8 @@ services:
   nginx:
       image: nginx:latest
       volumes:
-        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        # - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        - ./nginx/nginx.${NGINX_ENV}.conf:/etc/nginx/nginx.conf
         - /etc/letsencrypt/live/citestingx.com:/etc/letsencrypt/live/citestingx.com:ro
         - /etc/letsencrypt/archive/citestingx.com:/etc/letsencrypt/archive/citestingx.com:ro
 
@@ -54,6 +55,8 @@ services:
       depends_on:
         - frontend
         - backend
+      environment:
+        - USE_TLS=${USE_TLS}
 
 volumes:
   postgres_data:
