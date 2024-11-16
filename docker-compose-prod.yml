@@ -54,8 +54,7 @@ services:
       depends_on:
         - frontend
         - backend
-      environment:
-        - USE_TLS=${USE_TLS}
+
 
 volumes:
   postgres_data:
